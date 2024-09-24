@@ -20,7 +20,9 @@ const { authenticateToken } = require("./utilities");
 app.use(express.json());
 app.use(
   cors({
-    origin: "*",
+    origin: ["https://notes-app-nine-lovat.vercel.app"],
+    methods: ["GET", "POST", "PUT", "DELETE"],
+    credentials: true,
   })
 );
 app.get("/", (req, res) => {
