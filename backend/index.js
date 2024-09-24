@@ -13,10 +13,10 @@ const Note = require("./models/note.model");
 const express = require("express");
 const cors = require("cors");
 const app = express();
-
+const port = process.env.PORT || 8000;
 const jwt = require("jsonwebtoken");
 const { authenticateToken } = require("./utilities");
-
+// middleware
 app.use(express.json());
 app.use(
   cors({
@@ -267,7 +267,7 @@ app.get("/search-notes/", authenticateToken, async (req, res) => {
   }
 });
 
-app.listen(8000, () => {
-  console.log("Server is running on port 8000");
+app.listen(port, () => {
+  console.log(`Server is running on port ${port}`);
 });
 module.export = app;
