@@ -28,7 +28,7 @@ const port = process.env.PORT || 8000;
 app.use(express.json());
 app.use(
   cors({
-    origin: process.envFRONTEND_ORIGIN || "https://qwiknote.vercel.app",
+    origin: process.env.FRONTEND_ORIGIN || "https://qwiknote.vercel.app",
     methods: ["GET", "POST", "PUT", "DELETE"],
     credentials: true,
     allowedHeaders: ["Content-Type", "Authorization"],
