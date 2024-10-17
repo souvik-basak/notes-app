@@ -18,7 +18,7 @@ mongoose
     useUnifiedTopology: true,
   })
   .then(() => console.log("Connected to MongoDB"))
-  .catch((err) => console.error("Could not connect to MongoDB", err));
+  .catch((err) => console.error("Could not connect to MongoDB", err.message));
 
 // Express app setup
 const app = express();
@@ -28,12 +28,15 @@ const port = process.env.PORT || 8000;
 app.use(express.json());
 app.use(
   cors({
-    // origin: "*",
-    origin: process.env.ALLOWED_ORIGINS.split(','),
+    origin: process.env.ALLOWED_ORIGINS || "http://localhost:5173",
     methods: ["GET", "POST", "PUT", "DELETE"],
     credentials: true,
+    allowedHeaders: ["Content-Type", "Authorization"],
   })
 );
+
+app.options("*", cors());
+
 
 // Test route
 app.get("/", (req, res) => {
@@ -102,7 +105,9 @@ app.post("/login", async (req, res) => {
 
   const isPasswordValid = await bcrypt.compare(password, userInfo.password);
   if (!isPasswordValid)
-    return res.json({ error: true, message: "Password is incorrect" });
+    return res
+      .status(401)
+      .json({ error: true, message: "Password is incorrect" });
 
   const accessToken = jwt.sign(
     { user: userInfo },

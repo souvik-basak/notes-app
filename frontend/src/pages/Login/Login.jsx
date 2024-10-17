@@ -33,6 +33,7 @@ const Login = () => {
         email: email,
         password: password,
       });
+    // If the login is successful, save the token in local storage and redirect to the dashboard
       if (response.data && response.data.accessToken) {
         localStorage.setItem("token", response.data.accessToken);
         navigate("/dashboard");

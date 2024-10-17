@@ -1,1 +1,2 @@
-export const BASE_URL = "https://notes-app-api-omega.vercel.app";
+export const BASE_URL = "https://notes-app-be-9mft.onrender.com/";
+// export const BASE_URL = "http://localhost:8000";
