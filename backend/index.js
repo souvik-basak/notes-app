@@ -1,7 +1,7 @@
 require("dotenv").config();
 const config = require("./config.json");
 const mongoose = require("mongoose");
-const bcrypt = require("bcrypt");
+const bcrypt = require("bcryptjs");
 const express = require("express");
 const cors = require("cors");
 const jwt = require("jsonwebtoken");
@@ -28,7 +28,8 @@ const port = process.env.PORT || 8000;
 app.use(express.json());
 app.use(
   cors({
-    origin: ["https://notes-app-nine-lovat.vercel.app"],
+    // origin: "*",
+    origin: process.env.ALLOWED_ORIGINS.split(','),
     methods: ["GET", "POST", "PUT", "DELETE"],
     credentials: true,
   })
