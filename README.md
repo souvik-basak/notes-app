@@ -55,14 +55,14 @@ Notes-App is a robust and scalable note-taking application, featuring a backend 
 Clone this repository:
 
 ```bash
-git clone https://github.com/your-username/notes-app.git
+https://github.com/souvik-basak/notes-app.git
 cd notes-app
 ```
 ### Backend Setup
 
 Navigate to the backend directory:
 ```bash
-cd notes-app-backend
+cd backend
 ```
 Install dependencies:
 
@@ -89,7 +89,7 @@ npm run dev
 In a new terminal, navigate to the frontend directory:
 
 ```bash
-cd ../notes-app
+cd frontend
 ```
 
 Install frontend dependencies:
